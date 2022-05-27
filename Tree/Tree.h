@@ -1,3 +1,5 @@
+#include "Heap.h"
+#include"Queue.h"
 typedef char BTDataType;
  
 typedef struct BinaryTreeNode
