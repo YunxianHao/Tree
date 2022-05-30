@@ -4,6 +4,7 @@ void Swap(HPDataType* p1, HPDataType* p2)
 	*p1 = *p2;
 	*p2 = tmp;
 }
+
 void AdjustDown(HPDataType* a, int size, int parent)
 {
 	int child = parent * 2 + 1;
