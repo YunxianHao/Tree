@@ -1,0 +1,51 @@
+//niuke KY11
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+typedef struct BTNode
+{
+    char data;
+    struct BTNode* left;
+    struct BTNode* right;
+}BTNode;
+void InOrderTree(BTNode* root)
+{
+    if(root == NULL)
+    {
+        return;
+    }
+    InOrderTree(root->left);
+    printf("%c ",root->data);
+    InOrderTree(root->right);
+    
+}
+BTNode* CreatTree(char* str,int* pi)
+{
+    if(str[*pi] != '#')
+    {
+        //creat current node
+        BTNode* root = (BTNode*)malloc(sizeof(BTNode));
+        root->data = str[*pi];
+        (*pi)++;
+        //create leftchild tree
+        root->left = CreatTree(str,pi);
+        (*pi)++;
+        //create rightchild tree
+        root->right = CreatTree(str,pi);
+        return root;
+    }
+    else
+    {
+        return NULL;
+    }
+}
+
+int main()
+{
+    char arr[101];
+    scanf("%s",arr);
+    int i = 0;
+    BTNode* tree = CreatTree(arr,&i);
+    InOrderTree(tree);
+    return 0;
+}
